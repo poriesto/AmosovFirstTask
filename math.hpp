@@ -4,7 +4,7 @@
 
 template<typename T> void MinMax(std::vector<std::vector<T> > matrix)
 {
-  std::cout << "MinMax method" << std::endl;
+  std::cout << "!======MinMax method======!" << std::endl;
   std::vector<T> min;
 
   //create min vector
@@ -22,7 +22,7 @@ template<typename T> void Sav(std::vector<std::vector<T> > matrix)
   std::vector<std::vector<T>>mat1, mat3;
     std::vector<T>mat2;
     T max = 0;
-    std::cout << std::endl << "Savage method" << std::endl;
+    std::cout << std::endl << "!======Savage method======!" << std::endl;
     for(unsigned int i = 0; i <= matrix.size(); i++)
     {
         mat1.push_back(getCol(matrix,i));
@@ -48,28 +48,23 @@ template<typename T> void Sav(std::vector<std::vector<T> > matrix)
     }
     std::cout << "Mat2 check: " << std::endl;
     print(mat2);
-    std::cout << std::endl << "Result of Savage method: " << *min_element(mat2.begin(), mat2.end());
+    std::cout << std::endl << "Result of Savage method: " << *min_element(mat2.begin(), mat2.end()) << std::endl;
 
 }
 template<typename T> void HW(std::vector<std::vector<T> > matrix, double C)
   {
-    std::vector<T> min, max, result;
+    std::vector<T> min, max;
+    std::vector<double> result;
     std::vector<std::vector<T>> mat1;
-    std::cout << std::endl << "HW method" << std::endl;
+    std::cout << std::endl << "!======HW method======!" << std::endl;
     if(C <= 1 && C >= 0)
     {
-        for(unsigned int i = 0; i < matrix.size(); i++)
-        {
-            mat1.push_back(getCol(matrix, i));
-        }
-        std::cout << "Check mat1" << std::endl;
-        print(mat1);
-        for(auto value : mat1)
+        for(auto value : matrix)
         {
             max.push_back(*max_element(value.begin(), value.end()));
             min.push_back(*min_element(value.begin(), value.end()));
         }
-        std::cout << std::endl << "Check min:" << std::endl;
+        std::cout << "Check min:" << std::endl;
         print(min);
         std::cout << std::endl << "Check max:" << std::endl;
         print(max);
@@ -77,11 +72,12 @@ template<typename T> void HW(std::vector<std::vector<T> > matrix, double C)
                  iterMin != min.end(), iterMax != max.end();
                  iterMin++, iterMax++)
         {
-            result.push_back(C*(*iterMin) + (1 - C)*(*iterMax));
+	  double value = C * (*iterMin) + ( 1 - C) * (*iterMax);
+	  result.push_back( value );
         }
         std::cout << std::endl << "Check result" << std::endl;
         print(result);
-        std::cout << std::endl << "Result of HW method: " << *max_element(result.begin(), result.end());
+        std::cout << std::endl << "Result of HW method: " << *max_element(result.begin(), result.end()) << std::endl;
     }
     else
     {
@@ -110,7 +106,7 @@ template<typename T> bool checkP(std::vector<T> matrix)
 
 template<typename T> void BL(std::vector<T>X, std::vector<double>P)
 {
-  std::cout << std::endl << "BL method";
+  std::cout << std::endl << "!======BL method======!";
   if(checkP(P))
     {
       std::cout << ": " << std::endl << "P(x) is valud" << std::endl;

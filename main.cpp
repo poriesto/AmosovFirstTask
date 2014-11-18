@@ -11,7 +11,7 @@ int main(int argc, const char *argv[])
 	};
 	vector<int>X{100,150,200,250,300};
 	vector<double>P{0.1, 0.15, 0.25, 0.3, 0.2};
-	int param = 0.21;
+	double param = 0.21;
 	
 	cout << "Init matrix" << endl;
 	print(mat);
