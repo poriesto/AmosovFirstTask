@@ -19,7 +19,7 @@ template<typename T> void MinMax(std::vector<std::vector<T> > matrix)
 
 template<typename T> void Sav(std::vector<std::vector<T> > matrix)
 {
-    std::vector<std::vector<T>>mat1;
+  std::vector<std::vector<T>>mat1, mat3;
     std::vector<T>mat2;
     T max = 0;
     std::cout << std::endl << "Savage method" << std::endl;
@@ -36,7 +36,13 @@ template<typename T> void Sav(std::vector<std::vector<T> > matrix)
     }
     std::cout << "\nCheck mat1 \n";
     print(mat1);
-    for(auto value : mat1)
+    for(unsigned int i = 0; i < matrix.size(); i++)
+      {
+	mat3.push_back(getCol(mat1, i));
+      }
+    std::cout << "Check mat3:" << std::endl;
+    print(mat3);
+    for(auto value : mat3)
     {
         mat2.push_back(*max_element(value.begin(), value.end()));
     }
