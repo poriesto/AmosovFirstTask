@@ -3,40 +3,43 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-using namespace std;
 
-template <typename T>
-void print(T cont)
+template <typename T> void print(T cont)
 {
     for(auto value : cont)
     {
-        cout << value << "\t";
+      std::cout << value << "\t";
     }
 }
-template <typename T>
-void print(vector<vector<T>> vec)
+
+template <typename T> void print(std::vector<std::vector<T>> vec)
 {
     for(auto value : vec)
     {
         print(value);
-        cout << endl;
+	std::cout << std::endl;
     }
 }
-template <typename T>
-vector<T> getCol(vector<vector<T>>matrix, unsigned int col)
+
+template <typename T> std::vector<T> getCol(std::vector<std::vector<T>>matrix, unsigned int col)
 {
-    vector<T>tmp;
+    std::vector<T>tmp;
     for(auto value : matrix)
     {
         tmp.push_back(*(value.begin()+col));
     }
     return tmp;
 }
-template <typename T>
-vector<vector<double>> getDepends(vector<T>row, vector<T>col)
+
+template <typename T> std::vector<std::vector<T>> getRowColMatrix(std::vector<std::vector<T>> matrix)
 {
-    vector<vector<double>> result;
-    return result;
+  std::vector<std::vector<T>> tmp;
+  for(unsigned int i = 0; i <= matrix.capacity(); i++)
+    {
+      tmp.emplace_back(getCol(matrix, i));
+    }
+  tmp.shrink_to_fit();
+  return tmp;
 }
 
 #endif
